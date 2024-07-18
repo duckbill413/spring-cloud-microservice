@@ -46,6 +46,11 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
+    public void deleteAllUsers() {
+        userRepository.deleteAll();
+    }
+
+    @Override
     public UserDto createUser(UserDto userDto) {
         userDto.setUserId(UUID.randomUUID().toString());
 

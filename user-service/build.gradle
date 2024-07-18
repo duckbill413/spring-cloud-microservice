@@ -61,10 +61,15 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-config'
 
     // https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-bootstrap
+    // 주로 Config Server과 함꼐 사용되어 애플리케이션이 시작되기 전에 외부 설정을 가져올 수 있도록 함
+    // bootstrap.yml 은 application.yml 보다 먼저 로드 되며 외부 설정 서버와의 연결등을 포함
     implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
 
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+    // https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-bus-amqp
+    implementation 'org.springframework.cloud:spring-cloud-starter-bus-amqp'
 }
 
 dependencyManagement {

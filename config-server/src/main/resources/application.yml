@@ -17,3 +17,15 @@ spring:
           #          uri: file:///D:/git/spring-cloud-microservice
           #          username: [username] # private repository 인 경우
           #          password: [password] # private repository 인 경우
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: beans, refresh, httptrace, health, busrefresh

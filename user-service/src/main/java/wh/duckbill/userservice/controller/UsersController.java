@@ -56,6 +56,11 @@ public class UsersController {
         return ResponseEntity.status(HttpStatus.CREATED).body(responseUser);
     }
 
+    @DeleteMapping("/users")
+    public void deleteAllUsers() {
+        usersService.deleteAllUsers();
+    }
+
     @GetMapping("/users")
     public ResponseEntity<List<ResponseUser>> getUsers() {
         Iterable<UserEntity> userByAll = usersService.getUserByAll();
