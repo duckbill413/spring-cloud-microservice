@@ -9,14 +9,6 @@ import org.springframework.core.env.Environment;
 @SpringBootApplication
 public class ConfigServerApplication {
 
-//    public ConfigServerApplication(Environment environment) {
-//        System.out.println(environment.getProperty("======================="));
-//        System.out.println(environment.getProperty("======================="));
-//        System.out.println(environment.getProperty("user.home"));
-//        System.out.println(environment.getProperty("======================="));
-//        System.out.println(environment.getProperty("======================="));
-//    }
-
     public static void main(String[] args) {
         SpringApplication.run(ConfigServerApplication.class, args);
     }
