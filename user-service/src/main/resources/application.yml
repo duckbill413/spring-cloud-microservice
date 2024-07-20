@@ -7,11 +7,11 @@ spring:
   h2:
     console:
       enabled: true
-#  datasource:
-#    url: jdbc:h2:mem:testdb
-#    driver-class-name: org.h2.Driver
-#    username: sa
-#    password: 1234
+  #  datasource:
+  #    url: jdbc:h2:mem:testdb
+  #    driver-class-name: org.h2.Driver
+  #    username: sa
+  #    password: 1234
   rabbitmq:
     host: 127.0.0.1
     port: 5672
@@ -39,3 +39,7 @@ management:
     web:
       exposure:
         include: health, refresh, beans, busrefresh
+
+logging:
+  level:
+    wh.duckbill.userservice.client: DEBUG
