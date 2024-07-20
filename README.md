@@ -12,3 +12,9 @@ Dowon Lee
 - 섹션 6. Users Microservice ➁
 - 섹션 7. Configuration Service
 - 섹션 8. Spring Cloud Bus
+- 섹션 9. 설정 정보의 암호화 처리
+- 섹션 10. Microservice 간 통신
+- 섹션 11. 데이터 동기화를 위한 Apache Kafka의 활용 ①
+- 섹션 12. 데이터 동기화를 위한 Apache Kafka의 활용 ②
+
+  
