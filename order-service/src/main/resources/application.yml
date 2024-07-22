@@ -8,16 +8,21 @@ spring:
     console:
       enabled: true
   datasource:
-    url: jdbc:h2:mem:testdb
-    driver-class-name: org.h2.Driver
-    username: sa
-    password: 1234
+    url: jdbc:mysql://localhost:3306/my_db
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ssafy
+    password: ssafy
+#  datasource:
+#    url: jdbc:h2:mem:testdb
+#    driver-class-name: org.h2.Driver
+#    username: sa
+#    password: 1234
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
     generate-ddl: true
-    database: h2
+    database: mysql
     defer-datasource-initialization: true
 
 eureka:
