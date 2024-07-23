@@ -2,7 +2,7 @@ package wh.duckbill.orderservice.jpa;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.hibernate.annotations.ColumnDefault;
+import org.springframework.data.annotation.CreatedDate;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -28,7 +28,7 @@ public class OrderEntity implements Serializable {
     @Column(nullable = false, unique = true)
     private String orderId;
 
-    @Column(nullable = false, insertable = false, updatable = false)
-    @ColumnDefault(value = "CURRENT_TIMESTAMP")
+    @CreatedDate
+    @Column(insertable = false, updatable = false)
     private Date createdAt;
 }

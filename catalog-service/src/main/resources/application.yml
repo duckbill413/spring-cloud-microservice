@@ -8,7 +8,7 @@ spring:
     console:
       enabled: true
   datasource:
-    url: jdbc:h2:mem:testdb
+    url: jdbc:h2:mem:testdb;MODE=MySQL;DATABASE_TO_LOWER=TRUE
     driver-class-name: org.h2.Driver
     username: sa
     password: 1234
@@ -17,7 +17,7 @@ spring:
       ddl-auto: create-drop
     show-sql: true
     generate-ddl: true
-    database: h2
+    database: mysql
     defer-datasource-initialization: true
 
 eureka:
