@@ -3,6 +3,8 @@ package wh.duckbill.userservice.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
+import org.springframework.cloud.client.circuitbreaker.CircuitBreaker;
+import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
 import org.springframework.core.env.Environment;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -30,6 +32,7 @@ public class UsersServiceImpl implements UsersService {
     private final RestTemplate restTemplate;
     private final Environment env;
     private final OrderServiceClient orderServiceClient;
+    private final CircuitBreakerFactory circuitBreakerFactory;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -94,7 +97,14 @@ public class UsersServiceImpl implements UsersService {
 //        }
 
         /* Feign Error Decoder*/
-        List<ResponseOrder> orders = orderServiceClient.getOrders(userId);
+//        List<ResponseOrder> orders = orderServiceClient.getOrders(userId);
+
+        /* circuit breaker */
+        log.info("Before call orders microservice");
+        CircuitBreaker circuitbreaker = circuitBreakerFactory.create("circuitbreaker");
+        List<ResponseOrder> orders = circuitbreaker.run(() -> orderServiceClient.getOrders(userId), throwable ->
+                new ArrayList<>());
+        log.info("After call orders microservice");
         userDto.setOrders(orders);
 
         return userDto;
