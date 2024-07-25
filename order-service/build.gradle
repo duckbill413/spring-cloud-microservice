@@ -42,12 +42,17 @@ dependencies {
     implementation 'org.springframework.kafka:spring-kafka:3.2.2'
 
     // Spring boot 3.0 Zipkin - Brave - Micrometer
+    implementation 'io.zipkin.brave:brave-instrumentation-spring-web'
     implementation 'io.zipkin.reporter2:zipkin-reporter-brave'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'io.micrometer:micrometer-tracing-bridge-brave'
+    implementation 'io.micrometer:micrometer-observation'
 
     // https://mvnrepository.com/artifact/io.github.openfeign/feign-micrometer
     implementation 'io.github.openfeign:feign-micrometer'
+
+    // https://mvnrepository.com/artifact/io.micrometer/micrometer-registry-prometheus
+    implementation 'io.micrometer:micrometer-registry-prometheus'
 }
 
 dependencyManagement {

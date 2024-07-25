@@ -1,5 +1,6 @@
 package wh.duckbill.userservice.controller;
 
+import io.micrometer.core.annotation.Timed;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.core.env.Environment;
@@ -25,6 +26,7 @@ public class UsersController {
     private final Greeting greeting;
     private final ModelMapper modelMapper;
 
+    @Timed(value = "users.status", longTask = true)
     @GetMapping("/health-check")
     public String status() {
         String status = """
@@ -42,6 +44,7 @@ public class UsersController {
                 env.getProperty("token.expiration_time"));
     }
 
+    @Timed(value = "users.welcome", longTask = true)
     @GetMapping("/welcome")
     public String welcome() {
         return greeting.getMessage();
