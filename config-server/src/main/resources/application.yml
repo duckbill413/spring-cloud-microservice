@@ -4,8 +4,8 @@ server:
 spring:
   application:
     name: config-server
-  profiles:
-    active: native # 로컬 폴더의 환경 파일을 읽기 위한 profile 설정 (default: )
+#  profiles:
+#    active: native # 로컬 폴더의 환경 파일을 읽기 위한 profile 설정 (default: )
   cloud:
     config:
       server:
@@ -17,11 +17,12 @@ spring:
           #          uri: file:///D:/git/spring-cloud-microservice
           #          username: [username] # private repository 인 경우
           #          password: [password] # private repository 인 경우
-  rabbitmq:
-    host: 127.0.0.1
-    port: 5672
-    username: guest
-    password: guest
+        bootstrap: true
+#  rabbitmq:
+#    host: 127.0.0.1
+#    port: 5672
+#    username: guest
+#    password: guest
 
 
 management:
