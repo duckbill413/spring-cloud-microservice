@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'wh.duckbill'
-version = '0.0.1-SNAPSHOT'
+version = '1.0'
 
 java {
     toolchain {
@@ -25,6 +25,9 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
+    // https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-config-server
+    implementation 'org.springframework.cloud:spring-cloud-config-server:4.1.3'
+
 }
 
 dependencyManagement {

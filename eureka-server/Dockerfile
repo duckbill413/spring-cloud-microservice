@@ -1,0 +1,4 @@
+FROM openjdk:17-ea-slim-buster
+VOLUME /tmp
+COPY /build/libs/eureka-server-1.0.jar EurekaServer.jar
+ENTRYPOINT ["java", "-jar", "EurekaServer.jar"]

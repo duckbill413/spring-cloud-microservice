@@ -2,6 +2,6 @@ encrypt:
 #  key: Pl0YADvlwQNbNzyzu1jhFQxm52aUm0KpQYosvNfEXbosfx2UyF
   key-store:
 #    location: file:///${user.home}/native-file-repo/keystore/apiEncryptionKey.jks
-    location: file:///apiEncryptionKey.jks
+    location: file:/apiEncryptionKey.jks
     password: 1q2w3e4r
     alias: apiEncryptionKey
