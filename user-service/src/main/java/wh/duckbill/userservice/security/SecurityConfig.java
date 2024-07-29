@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -45,10 +46,7 @@ public class SecurityConfig {
 
         http.csrf(AbstractHttpConfigurer::disable);
 
-        http.authorizeHttpRequests(authorize ->
-//                        authorize.requestMatchers("/user-service/**").permitAll()
-//                        authorize.requestMatchers("/h2-console/**").permitAll()
-                        authorize
+        http.authorizeHttpRequests((authz) -> authz
                                 .requestMatchers(new AntPathRequestMatcher("/actuator/**")).permitAll()
                                 .requestMatchers(new AntPathRequestMatcher("/h2-console/**")).permitAll()
                                 .requestMatchers(new AntPathRequestMatcher("/users", "POST")).permitAll()
@@ -57,11 +55,14 @@ public class SecurityConfig {
                                 .requestMatchers(new AntPathRequestMatcher("/swagger-ui/**")).permitAll()
                                 .requestMatchers(new AntPathRequestMatcher("/swagger-resources/**")).permitAll()
                                 .requestMatchers(new AntPathRequestMatcher("/v3/api-docs/**")).permitAll()
-//                                .requestMatchers("/**").access(this::hasIpAddress)
-                                .requestMatchers("/**")
-                                .access(new WebExpressionAuthorizationManager("hasIpAddress('127.0.0.1') or hasIpAddress('192.168.0.15')"))
+//                        .requestMatchers("/**").access(this::hasIpAddress)
+                                .requestMatchers("/**").access(
+                                        new WebExpressionAuthorizationManager("hasIpAddress('127.0.0.1') or hasIpAddress('192.168.0.15') or hasIpAddress('192.168.0.24') or hasIpAddress('172.18.0.0/16')")) // host pc ip address
                                 .anyRequest().authenticated()
-        ).authenticationManager(authenticationManager);
+                )
+                .authenticationManager(authenticationManager)
+                .sessionManagement((session) -> session
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
         // 인증 처리를 위한 Filter 를 Security Filter 에 추가
         http.addFilter(getAuthenticationFilter(authenticationManager));
