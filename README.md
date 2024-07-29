@@ -16,5 +16,13 @@ Dowon Lee
 - 섹션 10. Microservice 간 통신
 - 섹션 11. 데이터 동기화를 위한 Apache Kafka의 활용 ①
 - 섹션 12. 데이터 동기화를 위한 Apache Kafka의 활용 ②
+- 섹션 13. 장애 처리와 Microservice 분산 추적
+- 섹션 14. Microservice 모니터링
+- 섹션 15. 애플리케이션 배포를 위한 컨테이너 가상화
+- 섹션 16. 애플리케이션 배포 - Docker Container
 
-  
+## Branch
+- master  
+  Application 의 도커 설정까지
+- local  
+  local 에서 실행 (Docker X)
