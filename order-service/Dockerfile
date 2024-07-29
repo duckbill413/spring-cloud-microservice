@@ -1,7 +1,7 @@
-FROM openjdk:17-ea-33-jdk-slim
+FROM openjdk:17-ea-slim
 
 VOLUME /tmp
 
-COPY ./build OrderService.jar
+COPY /build/libs/order-service-1.0.jar OrderService.jar
 
 ENTRYPOINT ["java", "-jar", "OrderService.jar"]

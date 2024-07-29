@@ -26,7 +26,7 @@ public class KafkaConsumer {
 
         Map<Object, Object> map = new HashMap<>();
         try {
-            map = objectMapper.readValue(kafkaMessage, new TypeReference<Map<Object, Object>>() {
+            map = objectMapper.readValue(kafkaMessage, new TypeReference<>() {
             });
         } catch (JsonProcessingException e) {
             e.printStackTrace();
