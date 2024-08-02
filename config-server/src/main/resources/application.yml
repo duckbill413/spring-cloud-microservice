@@ -14,15 +14,16 @@ spring:
         git:
           default-label: master
           uri: https://github.com/duckbill413/spring-cloud-microservice.git
+          search-paths: config-files
           #          uri: file:///D:/git/spring-cloud-microservice
           #          username: [username] # private repository 인 경우
           #          password: [password] # private repository 인 경우
         bootstrap: true
-#  rabbitmq:
-#    host: 127.0.0.1
-#    port: 5672
-#    username: guest
-#    password: guest
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
 
 
 management:
