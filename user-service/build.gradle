@@ -90,6 +90,9 @@ dependencies {
     // https://mvnrepository.com/artifact/io.micrometer/micrometer-registry-prometheus
     implementation 'io.micrometer:micrometer-registry-prometheus'
 
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-hateoas
+    implementation 'org.springframework.boot:spring-boot-starter-hateoas:3.3.2'
+
 }
 
 dependencyManagement {

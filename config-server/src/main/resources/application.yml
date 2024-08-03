@@ -4,8 +4,8 @@ server:
 spring:
   application:
     name: config-server
-  profiles:
-    active: native # 로컬 폴더의 환경 파일을 읽기 위한 profile 설정 (default: )
+#  profiles:
+#    active: native # 로컬 폴더의 환경 파일을 읽기 위한 profile 설정 (default: )
   cloud:
     config:
       server:
@@ -14,7 +14,7 @@ spring:
         git:
           default-label: master
           uri: https://github.com/duckbill413/spring-cloud-microservice.git
-          search-paths: config-files
+          search-paths: config-files # repository 의 config-files 디렉토리에서 설정 읽기
           #          uri: file:///D:/git/spring-cloud-microservice
           #          username: [username] # private repository 인 경우
           #          password: [password] # private repository 인 경우

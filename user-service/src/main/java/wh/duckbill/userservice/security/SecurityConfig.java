@@ -56,6 +56,7 @@ public class SecurityConfig {
                                 .requestMatchers(new AntPathRequestMatcher("/swagger-resources/**")).permitAll()
                                 .requestMatchers(new AntPathRequestMatcher("/v3/api-docs/**")).permitAll()
 //                        .requestMatchers("/**").access(this::hasIpAddress)
+                                // 인증 가능한 host 의 ip address 를 지정
                                 .requestMatchers("/**").access(
                                         new WebExpressionAuthorizationManager("hasIpAddress('127.0.0.1') or hasIpAddress('192.168.0.15') or hasIpAddress('192.168.0.24') or hasIpAddress('172.18.0.0/16')")) // host pc ip address
                                 .anyRequest().authenticated()

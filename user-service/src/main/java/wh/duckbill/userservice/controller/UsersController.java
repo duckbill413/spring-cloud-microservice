@@ -1,9 +1,14 @@
 package wh.duckbill.userservice.controller;
 
 import io.micrometer.core.annotation.Timed;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.core.env.Environment;
+import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +21,9 @@ import wh.duckbill.userservice.vo.ResponseUser;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 @RequestMapping("")
@@ -46,7 +54,11 @@ public class UsersController {
 
     @Timed(value = "users.welcome", longTask = true)
     @GetMapping("/welcome")
-    public String welcome() {
+    public String welcome(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("users.welcome ip: " + request.getRemoteAddr() +
+                           ", " + request.getRemoteHost() +
+                           ", " + request.getRequestURI() +
+                           ", " + request.getRequestURL());
         return greeting.getMessage();
     }
 
@@ -78,6 +90,27 @@ public class UsersController {
     public ResponseEntity<ResponseUser> getUser(@PathVariable("userId") String userId) {
         UserDto userDto = usersService.getUserByUserId(userId);
         ResponseUser responseUser = modelMapper.map(userDto, ResponseUser.class);
+
+        // Hateoas Model
+        EntityModel<ResponseUser> entityModel = EntityModel.of(responseUser);
+        WebMvcLinkBuilder linkTo = linkTo(methodOn(this.getClass()).getUsers());
+        entityModel.add(linkTo.withRel("all-users"));
+
         return ResponseEntity.status(HttpStatus.OK).body(responseUser);
+    }
+
+    @GetMapping("/users/hateoas")
+    public ResponseEntity<CollectionModel<EntityModel<ResponseUser>>> getUsersWithHateoas() {
+        List<EntityModel<ResponseUser>> result = new ArrayList<>();
+        Iterable<UserEntity> users = usersService.getUserByAll();
+
+        for (UserEntity user : users) {
+            ResponseUser responseUser = modelMapper.map(user, ResponseUser.class);
+            EntityModel<ResponseUser> entityModel = EntityModel.of(responseUser);
+            entityModel.add(linkTo(methodOn(this.getClass()).getUser(user.getUserId())).withSelfRel());
+            result.add(entityModel);
+        }
+
+        return ResponseEntity.ok(CollectionModel.of(result, linkTo(methodOn(this.getClass()).getUsersWithHateoas()).withSelfRel()));
     }
 }
