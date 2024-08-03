@@ -3,7 +3,7 @@ spring:
     url: jdbc:h2:mem:testdb
     driver-class-name: org.h2.Driver
     username: sa
-    password: "{cipher}AQCZqcrOPjIH6p8kalQWVs7FddmL+LElUr5sddeEIM5UGU9eYVKQBeT/FhPMPJJ22S5VLgE8Pa+dWrNoY0YoFmRshKAteyGCGt8YedobU/auuelC+u2ow1rGpe/Wm/g/R+EuT8HrleQFvusE1ZRifHC1gv7ATu7WpFEc5/6jY6CYBZfWi1tBxBskc7lokvk4xys4FaH8AuJj/GCJGt2ie79JrxGtEY0aDIAj9kHDoqIRB3+v1EXLXo0fSL+ZfJG3Nw0UZ3MVjAKYF4PdvYY8L3bRGQEae5eqh+CG3WDGg26+gbDJaXPWq2jTTnVZbUwuHMglu3XsJFXRFxRhoKsZedGbO4cS+UuVEf55GvOD/lXIPSLqvckr5NKSmhf6ocQrETY="
+    password: "{cipher}AQA5jyMIDsQSsJCfEKuFSbZGrOSnW7cqRfPbseSG6ubBJbuy35K3qPWQMHQLHJ0ImUwOwPsU/fPOyfqOOtK5pHTSL1DzZHeqjChNSTmUj/WgWuW6ZbbN8FTczwOpG+WoiEfKZ2WfDKHRhD5NsSdiPN7fvw0dvaXK8KclTVDUnxP12wRvoo4R4Sv8qvOZZ2HuMn9Y1Sz7Lbwxus8qBOIPewgWej7lJXjO1WBNuHF2Q7atWuLJ+m6McZ1vbT23jUk8L2+jb1VUUY/RRCZLl6FfYM7veFpDsYR7uOh1tz2VqPUGE8gGyVkQdRWo2++dGTk7TISKBmSYv9iapMr6Tm7RFFn0QBSKNnmXVy2eFtJx29iJRy2KxsRM5g4SaQsXPMxmv5VDXRYUa6Lb9qAkOPtTPRDg82idarzGzdnLQmmCw2qJ8oeFlWkVizAnk+gcd5uHQrs="
 
 order-service:
   url: http://ORDER-SERVICE/order-service/%s/orders
