@@ -1,7 +1,0 @@
-token:
-  expiration_time: 86400000
-#  secret: "LOCAL-AQqafoiasFwfaKOwFSnpionvpiagq41Ine"
-  secret: "{cipher}AQA5jyMIDsQSsJCfEKuFSbZGrOSnW7cqRfPbseSG6ubBJbuy35K3qPWQMHQLHJ0ImUwOwPsU/fPOyfqOOtK5pHTSL1DzZHeqjChNSTmUj/WgWuW6ZbbN8FTczwOpG+WoiEfKZ2WfDKHRhD5NsSdiPN7fvw0dvaXK8KclTVDUnxP12wRvoo4R4Sv8qvOZZ2HuMn9Y1Sz7Lbwxus8qBOIPewgWej7lJXjO1WBNuHF2Q7atWuLJ+m6McZ1vbT23jUk8L2+jb1VUUY/RRCZLl6FfYM7veFpDsYR7uOh1tz2VqPUGE8gGyVkQdRWo2++dGTk7TISKBmSYv9iapMr6Tm7RFFn0QBSKNnmXVy2eFtJx29iJRy2KxsRM5g4SaQsXPMxmv5VDXRYUa6Lb9qAkOPtTPRDg82idarzGzdnLQmmCw2qJ8oeFlWkVizAnk+gcd5uHQrs="
-
-gateway:
-  ip: 172.18.0.5
