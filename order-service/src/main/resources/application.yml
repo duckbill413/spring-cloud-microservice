@@ -36,7 +36,9 @@ eureka:
 
 logging:
   level:
-    wh.duckbill.orders: info
+    wh.duckbill.orderservice: info
+  pattern:
+    correlation: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
 
 management:
   tracing:
