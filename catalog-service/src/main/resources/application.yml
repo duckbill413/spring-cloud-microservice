@@ -4,6 +4,10 @@ server:
 spring:
   application:
     name: catalog-service
+  kafka:
+    producer:
+      bootstrap-servers: 172.18.0.101:9092
+  #      bootstrap-servers: 127.0.0.1:9092
   h2:
     console:
       enabled: true
