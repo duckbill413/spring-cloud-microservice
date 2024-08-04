@@ -1,54 +1,51 @@
 server:
-  port: 0
+  port: 60000
 
 spring:
+  cloud:
+    config:
+      name: user-service
+    openfeign:
+      loadbalancer:
+        ribbon:
+          enable: false
   application:
     name: user-service
   h2:
     console:
       enabled: true
-  #  datasource:
-  #    url: jdbc:h2:mem:testdb
-  #    driver-class-name: org.h2.Driver
-  #    username: sa
-  #    password: 1234
-  rabbitmq:
-    host: 127.0.0.1
-    port: 5672
-    username: guest
-    password: guest
-
-eureka:
-  instance:
-    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://127.0.0.1:8761/eureka
+      settings:
+        web-allow-others: true
+      path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: 1234
 
 greeting:
-  message: Welcome to the User Service
+  message: Welcome to the Simple E-commerce.
 
-#token:
-#  expiration_time: 86400000
-#  secret: jGCgrTB9PGo7dtQCjOC18iCNQNlW8PWooUKb0k5GgSFUGMDKT2
+logging:
+  level:
+    wh.duckbill.userservice: DEBUG
+  pattern:
+    correlation: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
 
 management:
   endpoints:
     web:
       exposure:
-        include: health, refresh, beans, busrefresh, info, metrics, prometheus
-  tracing:
-    sampling:
-      probability: 1.0
-    propagation:
-      consume: b3
-      produce: b3_multi
-  zipkin:
-    tracing:
-      endpoint: http://localhost:9411/api/v2/spans
+        include: refresh, health, beans, busrefresh, info, metrics, prometheus
 
-logging:
-  level:
-    wh.duckbill.userservice.client: DEBUG
+order-service-url: ${ORDER-SERVICE-URL}
+
+gateway:
+  ip: ${GATEWAY_IP}
+
+token:
+  expiration_time: ${TOKEN_EXPIRATION_TIME}
+  secret: ${TOKEN_SECRET}

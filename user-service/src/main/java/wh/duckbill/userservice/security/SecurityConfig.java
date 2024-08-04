@@ -58,7 +58,7 @@ public class SecurityConfig {
 //                        .requestMatchers("/**").access(this::hasIpAddress)
                                 // 인증 가능한 host 의 ip address 를 지정
                                 .requestMatchers("/**").access(
-                                        new WebExpressionAuthorizationManager("hasIpAddress('127.0.0.1') or hasIpAddress('192.168.0.15') or hasIpAddress('192.168.0.24') or hasIpAddress('172.18.0.0/16')")) // host pc ip address
+                                        new WebExpressionAuthorizationManager("hasIpAddress('127.0.0.1') or hasIpAddress('192.168.0.15') or hasIpAddress('192.168.0.24') or hasIpAddress('172.18.0.0/16') or hasIpAddress('192.168.65.3')")) // host pc ip address
                                 .anyRequest().authenticated()
                 )
                 .authenticationManager(authenticationManager)
